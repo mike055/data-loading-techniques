@@ -15,8 +15,8 @@ const CategoryList = ({ selectCategory }: CategoryListProps) => {
     api
       .categories()
       .then((categories: Category[]) => {
-        setCategories(categories);
         setLoading(false);
+        setCategories(categories);
       })
       .catch(error => {
         console.log("error!", error);

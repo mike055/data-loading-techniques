@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import Lazy from './techniques/lazy';
-import Traditional from './techniques/traditional';
+import RenderAsFetch from './techniques/render-as-fetch';
+import FetchOnRender from './techniques/fetch-on-render';
 
 const Global = createGlobalStyle`
   body {
@@ -15,12 +15,12 @@ const ClickableListItem = styled.li`
 `;
 
 enum Technique {
-  Traditional,
-  Lazy,
+  FetchOnRender,
+  RenderAsFetch,
 };
 
 const hasSelectedTechnique = (technique: Technique | null) => {
-  return (technique === Technique.Traditional as Technique || technique === Technique.Lazy as Technique)
+  return (technique === Technique.FetchOnRender as Technique || technique === Technique.RenderAsFetch as Technique)
 } 
 
 function App() {
@@ -30,16 +30,16 @@ function App() {
       <Global />
       <h1>Data loading</h1>
       <ul>
-        <ClickableListItem onClick={ ()=> setTechnique(Technique.Traditional) }>Traditional</ClickableListItem>
-        <ClickableListItem onClick={ ()=> setTechnique(Technique.Lazy) }>Lazy</ClickableListItem>
+        <ClickableListItem onClick={ ()=> setTechnique(Technique.FetchOnRender) }>Fetch On Render</ClickableListItem>
+        <ClickableListItem onClick={ ()=> setTechnique(Technique.RenderAsFetch) }>Render as you Fetch</ClickableListItem>
       </ul>
       <hr />
       {
         hasSelectedTechnique(technique) && (
           <>
-            <h2>Using { technique === Technique.Traditional as Technique ? 'Traditional ' : 'Lazy ' } data loading</h2>
-            { technique === Technique.Traditional as Technique && <Traditional /> }
-            { technique === Technique.Lazy as Technique && <Lazy /> }
+            <h2>Using { technique === Technique.FetchOnRender as Technique ? '"fetch on render"' : '"render as you fetch"' }</h2>
+            { technique === Technique.FetchOnRender as Technique && <FetchOnRender /> }
+            { technique === Technique.RenderAsFetch as Technique && <RenderAsFetch /> }
           </>
         )
       }
