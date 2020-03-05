@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Category } from "../../../types/Category";
 import api from "../../../service/api";
 
+import { List, ListItem } from '../../styles/Lists';
+import Spinner from '../../../components/spinner';
+
 type CategoryListProps = {
   selectCategory: (id: Category) => void;
 };
@@ -28,19 +31,19 @@ const CategoryList = ({ selectCategory }: CategoryListProps) => {
   return (
     <>
       <h3>Categories</h3>
-      {loading && <p>Loading...</p>}
+      {loading && <Spinner />}
       {error && <p>Error :(</p>}
-      <ul>
+      <List>
         {categories.map((c: Category) => {
           return (
-            <li key={c.id} onClick={()=> selectCategory(c)}>
-              <p>
-                {c.id} : {c.title}
-              </p>
-            </li>
+            <ListItem key={c.id} onClick={()=> selectCategory(c)}>
+              <div>
+                {c.title}
+              </div>
+            </ListItem>
           );
         })}
-      </ul>
+      </List>
     </>
   );
 };

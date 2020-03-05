@@ -25,13 +25,22 @@ const hasSelectedTechnique = (technique: Technique | null) => {
 
 function App() {
   const [ technique, setTechnique ] = useState<Technique | null>(null);
+
+  const delaySetTechnique = (technique: Technique) => {
+    setTechnique(null);
+
+    setTimeout(() => {
+      setTechnique(technique);
+    }, 500);
+  }
+
   return (
     <div>
       <Global />
       <h1>Data loading</h1>
       <ul>
-        <ClickableListItem onClick={ ()=> setTechnique(Technique.FetchOnRender) }>Fetch On Render</ClickableListItem>
-        <ClickableListItem onClick={ ()=> setTechnique(Technique.RenderAsFetch) }>Render as you Fetch</ClickableListItem>
+        <ClickableListItem onClick={ ()=> delaySetTechnique(Technique.FetchOnRender) }>Fetch On Render</ClickableListItem>
+        <ClickableListItem onClick={ ()=> delaySetTechnique(Technique.RenderAsFetch) }>Render as you Fetch</ClickableListItem>
       </ul>
       <hr />
       {

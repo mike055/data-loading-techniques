@@ -3,7 +3,7 @@ import CategoryList from "./category-list";
 import CategoryClues from "./category-clues";
 import { Category } from "../../types/Category";
 
-const Traditional = () => {
+const FetchOnRender = () => {
   const [category, setCategory] = useState<Category | null>(null);
   return (
     <>
@@ -14,4 +14,4 @@ const Traditional = () => {
   );
 };
 
-export default Traditional;
+export default FetchOnRender;
