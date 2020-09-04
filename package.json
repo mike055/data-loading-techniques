@@ -11,7 +11,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/styled-components": "^5.0.1",
-    "react": "^0.0.0-experimental-355970aa4",
+    "react": "^0.14.0",
     "react-dom": "^0.0.0-experimental-355970aa4",
     "react-scripts": "3.4.0",
     "styled-components": "^5.0.1",
